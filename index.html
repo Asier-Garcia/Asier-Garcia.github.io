@@ -7,15 +7,14 @@
     <title>¿Sí o no?</title>
     <style>
         body {
-            font-family: system-ui, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #eee;
+            /* background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); */
+            color: #000;
         }
 
         .container {
@@ -24,7 +23,7 @@
         }
 
         .gif {
-            max-width: 280px;
+            max-width: 500px;
             border-radius: 12px;
             margin-bottom: 1.5rem;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
@@ -56,43 +55,28 @@
             transform: scale(1.05);
         }
 
+        .btn-si, 
+        .btn-no {
+            width: 100px;
+        }
+
         .btn-si {
-            background: #4ade80;
-            color: #14532d;
+            /* background: #4ade80;
+            color: #14532d; */
             font-weight: bold;
         }
 
         .btn-no {
-            background: #f87171;
-            color: #7f1d1d;
+            /* background: #f87171;
+            color: #7f1d1d; */
             font-weight: bold;
         }
 
         .mensaje {
             margin-top: 2rem;
             padding: 1rem 1.5rem;
-            background: rgba(74, 222, 128, 0.2);
-            border: 2px solid #4ade80;
-            border-radius: 8px;
             font-size: 1.1rem;
-            display: none;
-        }
-
-        .mensaje.visible {
-            display: block;
-            animation: aparece 0.3s ease;
-        }
-
-        @keyframes aparece {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            color: #000;
         }
     </style>
 </head>
@@ -100,12 +84,15 @@
 <body>
     <div class="container">
         <img class="gif" src="assets/minions-cartoon.gif" alt="GIF">
-        <p class="texto">¿Quieres continuar?</p>
+        <h2 id="mensaje">¿Cenita putamadre en san valentin? eonooo</h2>
         <div class="botones">
-            <button type="button" class="btn btn-si" id="btnSi">Sí</button>
-            <button type="button" class="btn btn-no" id="btnNo">No</button>
+            <div>
+                <button type="button" class=" btn-si" id="btnSi">Sí</button>
+            </div>
+            <div>
+                <button type="button" class=" btn-no" id="btnNo">No</button>
+            </div>
         </div>
-        <div class="mensaje" id="mensaje">¡Genial! Has dicho que sí.</div>
     </div>
     <script>
         (function() {
@@ -114,14 +101,17 @@
             var mensaje = document.getElementById('mensaje');
             var tamanoBase = 18;
             var tamanoActual = tamanoBase;
+            var tamanoActual_no = tamanoBase;
 
             btnSi.addEventListener('click', function() {
-                mensaje.classList.add('visible');
+                mensaje.innerHTML = 'VAMOOOOOOOOO Eu te amo moito';
             });
 
             btnNo.addEventListener('click', function() {
-                tamanoActual += 15;
+                tamanoActual += 25;
+                tamanoActual_no = Math.max(10, tamanoActual_no - 25);
                 btnSi.style.fontSize = tamanoActual + 'px';
+                btnNo.style.fontSize = tamanoActual_no + 'px';
             });
         })();
     </script>
